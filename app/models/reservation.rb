@@ -9,4 +9,7 @@ class Reservation < ApplicationRecord
     validates :check_out_date, presence:true
     validates :check_in_time, presence: true
     validates :check_out_time, presence:true
+
+    belongs_to :user
+    belongs_to :car
 end
