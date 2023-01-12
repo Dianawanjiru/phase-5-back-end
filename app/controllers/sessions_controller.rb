@@ -1,17 +1,11 @@
 class SessionsController < ApplicationController
-  include ActionController::Cookies
-  rescue_from ActiveRecord::RecordNotFound, with: :render_not_found_response
-  rescue_from ActiveRecord::RecordInvalid, with: :render_unprocessable_entity
-
-  def authorize
-    render json: { errors: ["Not authorized"] }, status: :unauthorized unless session[:user_id]
-  end
-
-  def render_not_found_response
-    render json: { error: "Car not found" }, status: :not_found
-  end
-
-  def render_unprocessable_entity(invalid)
-    return render json: {errors: invalid.record.errors.full_messages}, status: :unprocessable_entity
-  end
+  def create
+		user = User.find_by(username: params[:username])
+		if user&.authenticate(params[:password])
+		  session[:user_id] = user.id
+		  render json: user, status: :created
+		else
+		  render json: { errors: ["Invalid username or password"] }, status: :unauthorized
+		end
+	end
 end
