@@ -17,9 +17,7 @@ class Seed
         3.times do |i| 
             user = User.create!(
                 username:Faker::Name.name,
-                password_digest:Faker::Internet.password,
-                image_url: Faker::Internet.url,
-                bio:Faker::Lorem.paragraph(sentence_count: 4)
+                password_digest:Faker::Internet.password
             )
         end
     end
