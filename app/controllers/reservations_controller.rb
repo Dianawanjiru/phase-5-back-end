@@ -1,5 +1,6 @@
 class ReservationsController < ApplicationController
     rescue_from ActiveRecord::RecordNotFound, with:  :respond_record_not_found
+      before_action :authorize
 
     def index 
         reservations = Reservation.all
@@ -17,7 +18,7 @@ class ReservationsController < ApplicationController
     end
 
     def update 
-        reservation = @current_user.reservation.find_reservation
+        reservation = find_reservation
         if reservation
             reservation.update(reservation_params)
             render json: reservation
@@ -27,7 +28,7 @@ class ReservationsController < ApplicationController
     end
 
     def destroy
-        reservation = @current_user.find_reservation
+        reservation = find_reservation
         if reservation
             reservation.destroy
             head :no_content
