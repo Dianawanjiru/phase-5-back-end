@@ -7,28 +7,42 @@
 #   Character.create(name: "Luke", movie: movies.first)
 
 
-
 class Seed 
     def self.begin
         seed = Seed.new
         seed.generate_users
         seed.generate_cars
         seed.generate_reservations
-       
+        seed.generate_appointments
+        
     end
-
+    
     def generate_users
-        puts "seeding users"
-        5.times do |i| 
+        3.times do |i| 
             user = User.create!(
                 username:Faker::Name.name,
-                password_digest:Faker::Internet.password,
-                image_url: Faker::Internet.url,
-                bio:Faker::Lorem.paragraph(sentence_count: 4)
+                password_digest:Faker::Internet.password
             )
         end
     end
-    puts "seeded users"
+
+     def generate_appointments
+        5.times do |i|
+            appointment = Appointment.create!(
+                first_name:Faker::Name.name,
+                last_name:Faker::Name.name,
+                email_address:Faker::Internet.email,
+                phone_number:Faker::PhoneNumber.cell_phone,
+                check_in_date:Faker::Date.forward(days: 23),
+                check_in_time:Faker::Time.between(from: DateTime.now - 1, to: DateTime.now, format: :default),
+                person_capacity:Faker::Number.between(from: 1, to: 7),
+                additional_info:Faker::Lorem.paragraph(sentence_count: 4),
+                user_id:Faker::Number.between(from: 1, to: 5) 
+            )
+        end
+    end
+
+   
 
     def generate_cars
         carArray = [
@@ -85,7 +99,7 @@ puts "seeded cars"
 
        
     
-    def generate_reservations
+ def generate_reservations
         puts "seed reservations"
         5.times do |i|
             reservation = Reservation.create!(
@@ -106,8 +120,10 @@ puts "seeded cars"
         end
         puts "seeded reservations"
     end
-   
 
+    
 end
 
+
 Seed.begin
+
