@@ -2,8 +2,7 @@ Rails.application.routes.draw do
   resources :reservations
   resources :cars
   resources :users
-
-  resources :appointments, only: [:index, :show, :create, :update, :destroy]
+  resources :appointments
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
   # Defines the root path route ("/")
