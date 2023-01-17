@@ -1,6 +1,7 @@
 class ReservationsController < ApplicationController
     rescue_from ActiveRecord::RecordNotFound, with:  :respond_record_not_found
-      before_action :authorize
+    
+    
 
     def index 
         reservations = Reservation.all
