@@ -22,7 +22,7 @@ class AppointmentsController < ApplicationController
             appointment.update(appointment_params)
             render json: appointment
         else
-            render json: { error: "Bird not found" }, status: :not_found
+            render json: { error: "Appointment not found" }, status: :not_found
         end
     end
 
