@@ -11,22 +11,26 @@ class Seed
     def self.begin
         seed = Seed.new
         seed.generate_users
+        seed.generate_appointments
         seed.generate_cars
         seed.generate_reservations
-        seed.generate_appointments
+        
         
     end
     
     def generate_users
+        puts "seeding users"
         3.times do |i| 
             user = User.create!(
                 username:Faker::Name.name,
                 password_digest:Faker::Internet.password
             )
         end
+        puts "seeded users"
     end
 
      def generate_appointments
+        puts "seeding Appointments"
         5.times do |i|
             appointment = Appointment.create!(
                 first_name:Faker::Name.name,
@@ -37,9 +41,10 @@ class Seed
                 check_in_time:Faker::Time.between(from: DateTime.now - 1, to: DateTime.now, format: :default),
                 person_capacity:Faker::Number.between(from: 1, to: 7),
                 additional_info:Faker::Lorem.paragraph(sentence_count: 4),
-                user_id:Faker::Number.between(from: 1, to: 5) 
+                user_id:Faker::Number.between(from: 1, to: 3) 
             )
         end
+        puts "seeded users"
     end
 
    
@@ -66,8 +71,9 @@ class Seed
 ]
 
 #Make 25 Random Cars
-puts "seeding cars"
+
 10.times do
+    puts "seeding cars"
     makeModel = Faker::Vehicle.make_and_model #=> "Honda CR-V"
     array = makeModel.split(" ")
     make = array[0]
@@ -94,8 +100,10 @@ puts "seeding cars"
         year: Faker::Vehicle.year, 
         image: carArray.sample)
    end
+   puts "seeded cars"
        end
-puts "seeded cars"
+      
+
 
        
     
@@ -114,7 +122,7 @@ puts "seeded cars"
                 check_in_time:Faker::Time.between(from: DateTime.now - 1, to: DateTime.now, format: :default),
                 check_out_time:Faker::Time.between(from: DateTime.now - 1, to: DateTime.now, format: :default),
                 additional_information:Faker::Lorem.paragraph(sentence_count: 4),
-                user_id:Faker::Number.between(from: 1, to: 5),
+                user_id:Faker::Number.between(from: 1, to: 3),
                 car_id:Faker::Number.between(from:1, to: 5)
             )
         end
