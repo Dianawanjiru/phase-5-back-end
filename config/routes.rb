@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  resources :reservations
+  resources :cars
   resources :users
 
   resources :appointments, only: [:index, :show, :create, :update, :destroy]
