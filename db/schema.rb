@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_01_15_140311) do
+ActiveRecord::Schema[7.0].define(version: 2023_01_17_073013) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -29,17 +29,17 @@ ActiveRecord::Schema[7.0].define(version: 2023_01_15_140311) do
   end
 
   create_table "cars", force: :cascade do |t|
-    t.string "price"
-    t.string "make"
-    t.string "model"
-    t.string "fuel_type"
-    t.string "transmission"
+    t.text "make"
+    t.text "model"
+    t.text "fuel_type"
+    t.text "transmission"
     t.integer "mileage"
     t.integer "engine_size"
     t.integer "year"
-    t.string "image"
+    t.text "image"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "price"
   end
 
   create_table "reservations", force: :cascade do |t|
@@ -58,11 +58,15 @@ ActiveRecord::Schema[7.0].define(version: 2023_01_15_140311) do
     t.integer "car_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.text "make"
+    t.text "model"
+    t.text "fuel_type"
+    t.integer "year"
   end
 
   create_table "users", force: :cascade do |t|
-    t.string "username"
-    t.string "password_digest"
+    t.text "username"
+    t.text "password_digest"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
