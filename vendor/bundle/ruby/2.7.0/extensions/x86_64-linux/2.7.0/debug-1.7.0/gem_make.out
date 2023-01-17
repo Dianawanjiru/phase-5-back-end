@@ -1,0 +1,16 @@
+current directory: /home/moringa/Documents/Development/phase_5/phase-5-back-end/vendor/bundle/ruby/2.7.0/gems/debug-1.7.0/ext/debug
+/usr/share/rvm/rubies/ruby-2.7.4/bin/ruby -I /usr/share/rvm/rubies/ruby-2.7.4/lib/ruby/2.7.0 -r ./siteconf20230110-10911-1czk5fs.rb extconf.rb
+creating Makefile
+
+current directory: /home/moringa/Documents/Development/phase_5/phase-5-back-end/vendor/bundle/ruby/2.7.0/gems/debug-1.7.0/ext/debug
+make "DESTDIR=" clean
+
+current directory: /home/moringa/Documents/Development/phase_5/phase-5-back-end/vendor/bundle/ruby/2.7.0/gems/debug-1.7.0/ext/debug
+make "DESTDIR="
+compiling debug.c
+compiling iseq_collector.c
+linking shared-object debug/debug.so
+
+current directory: /home/moringa/Documents/Development/phase_5/phase-5-back-end/vendor/bundle/ruby/2.7.0/gems/debug-1.7.0/ext/debug
+make "DESTDIR=" install
+/bin/install -m 0755 debug.so ./.gem.20230110-10911-1eb3tr0/debug
