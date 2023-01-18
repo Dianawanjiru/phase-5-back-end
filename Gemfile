@@ -51,3 +51,5 @@ end
 
 gem "active_model_serializers", "~> 0.10.13"
 
+# Add rack-cors
+gem 'rack-cors'
