@@ -1,6 +1,6 @@
 class AppointmentsController < ApplicationController
     rescue_from ActiveRecord::RecordNotFound, with:  :respond_record_not_found
-    #  skip_before_action :authorize
+    # skip_before_action :authorize
     def index 
         appointments = Appointment.all
         render json: appointments
@@ -12,7 +12,7 @@ class AppointmentsController < ApplicationController
     end
 
     def create
-        appointment = @current_user.appointment.create!(appointment_params)
+        appointment = Appointment.create!(appointment_params)
         render json: appointment, status: :created
     end
 

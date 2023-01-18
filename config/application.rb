@@ -8,18 +8,18 @@ Bundler.require(*Rails.groups)
 
 module CarRentalBackend
   class Application < Rails::Application
-    
-    
+
     config.middleware.insert_before 0, Rack::Cors do
       allow do
         origins '*'
         resource '*', :headers => :any, :methods => [:get, :post, :options]
       end
     end
-    
-    
+
     # Initialize configuration defaults for originally generated Rails version.
     config.load_defaults 7.0
+
+
 
     # Configuration for the application, engines, and railties goes here.
     #
@@ -37,5 +37,7 @@ module CarRentalBackend
     config.session_store :cookie_store, key: '_interslice_session'
     config.middleware.use ActionDispatch::Cookies
     config.middleware.use config.session_store, config.session_options
+
+    
   end
 end
